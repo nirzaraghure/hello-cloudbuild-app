@@ -1,4 +1,5 @@
-# Copyright 2018 Google LLC
+```bash
+# Copyright 2024 [Your Name]
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +14,20 @@
 # limitations under the License.
 
 # [START dockerfile]
-FROM python:3.7-slim
-RUN pip install flask
+FROM python:3.10-slim # Upgrade to latest Python version
+
+# Install required libraries
+RUN pip install --upgrade pip && \
+    pip install flask requests # Add requests library for API calls
+
+# Set working directory
 WORKDIR /app
+
+# Copy application code
 COPY app.py /app/app.py
+
+# Set entrypoint and command
 ENTRYPOINT ["python"]
-CMD ["/app/app.py"]
+CMD ["app.py"] # Simplify command
 # [END dockerfile]
+```
